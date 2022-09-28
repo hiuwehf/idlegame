@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <title>Idle game</title>
+  </head>
+  <body>
+    <script>
+      var displaymoney;
+      var money = 0;
+      var gps = 0;
+      var gpc = 1;
+      var gpcupgprice = 1000;
+      var miners = 0;
+      var minerprice = 10;
+      var tools = 0;
+      var toolprice = 100;
+
+      function buttonclick() {
+        money += gpc;
+      }
+
+      function gpcupg() {
+        if (money >= gpcupgprice) {
+          gpc += 100000;
+          money -= gpcupgprice;
+          gpcupgprice = 0.2 * gpcupgprice + gpcupgprice;
+          document.getElementById("gpc").innerHTML = gpc;
+          document.getElementById("gpcupgprice").innerHTML = gpcupgprice;
+          document.getElementById("gpcupgprice").innerText = parseFloat(gpcupgprice).toFixed(0);
+        } else {
+          alert("no money kekw");
+        }
+      }
+
+      function minerbuy() {
+        if (money >= minerprice) {
+          money -= minerprice;
+          miners += 1;
+          gps += 1;
+          minerprice = 0.2 * minerprice + minerprice;
+          document.getElementById("miners").innerHTML = miners;
+          document.getElementById("gps").innerHTML = gps;
+          document.getElementById("minerprice").innerHTML = minerprice;
+          document.getElementById("minerprice").innerText = parseFloat(minerprice).toFixed(0);
+        } else {
+          alert("insufficient");
+        }
+      }
+
+      function toolsbuy() {
+        if (money >= toolprice) {
+          tools += 1;
+          money -= toolprice;
+          gps += 10;
+          toolprice = 0.2 * toolprice + toolprice;
+          document.getElementById("tools").innerHTML = tools;
+          document.getElementById("gps").innerHTML = gps;
+          document.getElementById("toolprice").innerHTML = toolprice;
+          document.getElementById("toolprice").innerText = parseFloat(toolprice).toFixed(0);
+        } else {
+          alert("insufficient funds");
+        }
+      }
+      setInterval(income, 100);
+      function income() {
+        money += gps;
+      }
+      setInterval(shortnumbers, 0);
+      function shortnumbers() {
+        if (money >= 1 && money <= 1000) {
+          displaymoney = money;
+          document.getElementById("displaymoney").innerText =
+            parseFloat(displaymoney).toFixed(0);
+        } else if (money >= 1000 && money <= 1000000) {
+          displaymoney = money / 1000;
+          document.getElementById("displaymoney").innerText =
+            parseFloat(displaymoney).toFixed(2) + "k";
+        } else if (money >= 1000000 && money <= 1000000000) {
+          displaymoney = money / 1000000;
+          document.getElementById("displaymoney").innerText =
+            parseFloat(displaymoney).toFixed(1) + "m";
+        }
+      }
+    </script>
+    <button type="button" onclick="buttonclick()">Click</button>
+    <button type="button" onclick="minerbuy()">Buy Miner: $<a id="minerprice">10</a></button>
+    <button type="button" onclick="toolsbuy()">Buy Tools: $<a id="toolprice">100</a></button>
+    <button type="button" onclick="gpcupg()">Buy Clicker upgrade: $<a id="gpcupgprice">1000</a></button>
+
+    <h1>Money: <a id="displaymoney">0</a></h1>
+    <h2>Total GPS: <span id="gps">0</span></h2>
+    <h2>Total GPC: <span id="gpc">1</span></h2>
+    <h3>Miners: <span id="miners">0</span></h3>
+    <h3>Tools: <span id="tools">0</span></h3>
+    <h3>Minerprice: <span id="minerprice"></span></h3>
+    <h4>Toolprice: <span id="toolprice"></span></h4>
+  </body>
+</html>
