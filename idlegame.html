@@ -1,102 +1,146 @@
 <html>
-    <head>
-        <title>Idle game</title>
-    </head>
-    <body>
-        <script>
-            var displaymoney
-            var money = 0
-            var gps = 0
-            var gpc = 1
-            var gpcupgprice = 1000
-            var miners = 0
-            var minerprice = 10
-            var tools = 0
-            var toolprice = 100
+  <head>
+    <title>Idle game</title>
+  </head>
+  <body>
+    <script>
+      var displaymoney;
+      var money = 100000;
+      var gps = 0;
+      var gpc = 1;
+      var clickpricedisplay;
+      var clickupgprice = 1000;
+      var miners = 0;
+      var minerpricedisplay;
+      var minerprice = 10;
+      var tools = 0;
+      var toolpricedisplay;
+      var toolprice = 100;
 
-            function buttonclick(){
-                money+=gpc;
-                document.getElementById("money").innerHTML = parseFloat(money).toFixed(0);
+      function buttonclick() {
+        money += gpc;
+      }
 
-            }
+      function clickupg() {
+        if (money >= clickupgprice) {
+          gpc += 100000;
+          money -= clickupgprice;
+          clickupgprice = 0.2 * clickupgprice + clickupgprice;
+          document.getElementById("gpc").innerHTML = gpc;
+          document.getElementById("gpcupgprice").innerHTML = gpcupgprice;
+          document.getElementById("gpcupgprice").innerText = parseFloat(gpcupgprice).toFixed(0);
+        } else {
+          alert("no money kekw");
+        }
+      }
 
-            function gpcupg(){
-                if(money >= gpcupgprice){
-                    gpc+=100000
-                    money-=gpcupgprice
-                    gpcupgprice = (0.2 * gpcupgprice)+gpcupgprice;
-                    document.getElementById("gpc").innerHTML = gpc;
-                    document.getElementById("gpcupgprice").innerHTML = gpcupgprice;
-                    document.getElementById("gpcupgprice").innerText = parseFloat(gpcupgprice).toFixed(0);
-                }else{
-                    alert("no money kekw")
-                }
-            }
-            
-            function minerbuy(){
-                if(money >= minerprice){
-                    money-=minerprice;
-                    miners+=1;
-                    gps+=1;
-                    minerprice = (0.2 * minerprice)+minerprice;
-                    document.getElementById("miners").innerHTML = miners;
-                    document.getElementById("gps").innerHTML = gps;
-                    document.getElementById("minerprice").innerHTML = minerprice;
-                    document.getElementById("minerprice").innerText = parseFloat(minerprice).toFixed(0);
-                }else{
-                    alert("insufficient");
-                }
-            }
+      function minerbuy() {
+        if (money >= minerprice) {
+          money -= minerprice;
+          miners += 1;
+          gps += 1;
+          minerprice = 0.2 * minerprice + minerprice;
+          document.getElementById("miners").innerHTML = miners;
+          document.getElementById("gps").innerHTML = gps;
+          document.getElementById("minerprice").innerHTML = minerprice;
+          document.getElementById("minerprice").innerText = parseFloat(minerprice).toFixed(0);
+        } else {
+          alert("insufficient");
+        }
+      }
 
-            function toolsbuy(){
-                if(money >= toolprice){
-                    tools+=1;
-                    money-=toolprice;
-                    gps+=10;
-                    toolprice=(0.2*toolprice)+toolprice;
-                    document.getElementById("tools").innerHTML = tools;
-                    document.getElementById("gps").innerHTML = gps;
-                    document.getElementById("toolprice").innerHTML = toolprice;
-                    document.getElementById("toolprice").innerText = parseFloat(toolprice).toFixed(0);
-                }else{
-                    alert("insufficient funds");
-                }
-            }
-            setInterval(income, 1000);
-            function income(){
-                money+=gps;
-                document.getElementById("money").innerHTML = money;
-                document.getElementById("money").innerText = parseFloat(money).toFixed(0);
-            }
-            setInterval(shortnumbers,0)
-            function shortnumbers(){
-                if(money >= 1 && money <= 1000){
-                    displaymoney = money;
-                    document.getElementById("money").innerText = parseFloat(money).toFixed(0);
-                    document.getElementById("displaymoney").innerText = parseFloat(displaymoney).toFixed(0);
-                }else if(money >= 1000 && money <= 1000000){
-                    displaymoney = money / 1000;
-                    document.getElementById("money").innerText = parseFloat(money).toFixed(0);
-                    document.getElementById("displaymoney").innerText = parseFloat(displaymoney).toFixed(2)+"k";
-                }else if(money >= 1000000 && money <= 1000000000){
-                    displaymoney = money / 1000000;
-                    document.getElementById("money").innerText = parseFloat(money).toFixed(0);
-                    document.getElementById("displaymoney").innerText = parseFloat(displaymoney).toFixed(1)+"m";
-                }
-            }
-        </script>
-            <button type="button" onclick="buttonclick()">POG</button>
-            <button type="button" onclick="minerbuy()">Buy Miner: $<span id="minerprice">10</span></button>
-            <button type="button" onclick="toolsbuy()">Buy Tools: $<span id="toolprice">100</span></button>
-            <button type="button" onclick="gpcupg()">Buy Clicker upgrade: $<span id="gpcupgprice">1000</span></button>
+      function toolsbuy() {
+        if (money >= toolprice) {
+          tools += 1;
+          money -= toolprice;
+          gps += 10;
+          toolprice = 0.2 * toolprice + toolprice;
+          document.getElementById("tools").innerHTML = tools;
+          document.getElementById("gps").innerHTML = gps;
+          document.getElementById("toolprice").innerHTML = toolprice;
+          document.getElementById("toolprice").innerText = parseFloat(toolprice).toFixed(0);
+        } else {
+          alert("insufficient funds");
+        }
+      }
+      setInterval(income, 100);
+      function income() {
+        money += gps;
+      }
+      setInterval(shortnumbers, 0);
+      function shortnumbers() {
+        // MONEY NUMBER FORMATTING
+        if (money >= 1 && money <= 1000) {
+          displaymoney = money;
+          document.getElementById("displaymoney").innerText = parseFloat(displaymoney).toFixed(0);
+        } else if (money >= 1000 && money <= 1000000) {
+          displaymoney = money / 1000;
+          document.getElementById("displaymoney").innerText = parseFloat(displaymoney).toFixed(2) + "k";
+        } else if (money >= 1000000 && money <= 1000000000) {
+          displaymoney = money / 1000000;
+          document.getElementById("displaymoney").innerText = parseFloat(displaymoney).toFixed(1) + "m";
+        }
+        
+        // MONEY PER CLICK UPGRADE NUMBER FORMATTING
+        if(clickupgprice >= 1 && clickupgprice < 10000){
+          clickpricedisplay = clickupgprice;
+          document.getElementById("clickpricedisplay").innerText = parseFloat(clickpricedisplay).toFixed(0);
+        } else if(clickupgprice >= 10000 && clickupgprice < 1000000){
+          clickpricedisplay = clickupgprice / 1000;
+          document.getElementById("clickpricedisplay").innerText = parseFloat(clickpricedisplay).toFixed(1) + "k";
+        }else if(clickupgprice >= 1000000 && clickupgprice < 1000000000){
+          clickpricedisplay = clickupgprice / 1000000;
+          document.getElementById("clickpricedisplay").innerText = parseFloat(clickpricedisplay).toFixed(1) + "m";
+        }
 
-            <h1>shortnumb: <a id="displaymoney">0</a></h1>
-            <h1>numb: <a id="money">0</a></h1>
-            <h2>Total GPS: <span id="gps">0</span></h2>
-            <h2>Total GPC: <span id="gpc">1</span></h2>
-            <h3>Miners: <span id="miners">0</span></h3>
-            <h3>Tools: <span id="tools">0</span></h3>
-            <h3> Minerprice: <span id='minerprice'></span></h3>
-            <h4>Toolprice: <span id="toolprice"></span></h4>
-    </body>
+        // MINER NUMBER FORMATTING
+        if(minerprice >= 1 && minerprice < 10000){
+          minerpricedisplay = minerprice;
+          document.getElementById("minerpricedisplay").innerText = parseFloat(minerpricedisplay).toFixed(0);
+        } else if(minerprice >= 10000 && minerprice < 1000000){
+          minerpricedisplay = minerprice / 1000;
+          document.getElementById("minerpricedisplay").innerText = parseFloat(minerpricedisplay).toFixed(1) + "k";
+        }else if(minerprice >= 1000000 && minerprice < 1000000000){
+          minerpricedisplay = minerprice / 1000000;
+          document.getElementById("minerpricedisplay").innerText = parseFloat(minerpricedisplay).toFixed(1) + "m";
+        }
+
+        // TOOL NUMBER FORMATTING
+      if(toolprice >= 1 && toolprice < 10000){
+          toolpricedisplay = toolprice;
+          document.getElementById("toolpricedisplay").innerText = parseFloat(toolpricedisplay).toFixed(0);
+        } else if(toolprice >= 10000 && toolprice < 1000000){
+          toolpricedisplay = toolprice / 1000;
+          document.getElementById("toolpricedisplay").innerText = parseFloat(toolpricedisplay).toFixed(1) + "k";
+        }else if(toolprice >= 1000000 && toolprice < 1000000000){
+          toolpricedisplay = toolprice / 1000000;
+          document.getElementById("toolpricedisplay").innerText = parseFloat(toolpricedisplay).toFixed(1) + "m";
+        }
+      }
+
+      // setInterval(clickdisplay,10)
+      // function clickdisplay(){
+      //   if(minerprice >= 1 && clickupgprice < 10000){
+      //     clickpricedisplay = clickupgprice;
+      //     document.getElementById("clickpricedisplay").innerText = parseFloat(clickpricedisplay).toFixed(0);
+      //   } else if(clickupgprice >= 10000 && clickupgprice < 1000000){
+      //     clickpricedisplay = clickupgprice / 1000;
+      //     document.getElementById("clickpricedisplay").innerText = parseFloat(clickpricedisplay).toFixed(1) + "k";
+      //   }else if(clickupgprice >= 1000000 && clickupgprice < 1000000000){
+      //     clickpricedisplay = clickupgprice / 1000000;
+      //     document.getElementById("clickpricedisplay").innerText = parseFloat(clickpricedisplay).toFixed(1) + "m";
+      //   }
+      // }
+    </script>
+    <button type="button" onclick="buttonclick()">Click</button>
+    <button type="button" onclick="minerbuy()">Buy Miner: $<a id="minerpricedisplay">10</a></button>
+    <button type="button" onclick="toolsbuy()">Buy Tools: $<a id="toolpricedisplay">100</a></button>
+    <button type="button" onclick="clickupg()">Buy Clicker upgrade: $<a id="clickpricedisplay">1000</a></button>
+
+    <h1>Money: <a id="displaymoney">0</a></h1>
+    <h2>Total GPS: <span id="gps">0</span></h2>
+    <h2>Total GPC: <span id="gpc">1</span></h2>
+    <h3>Miners: <span id="miners">0</span></h3>
+    <h3>Tools: <span id="tools">0</span></h3>
+  </body>
 </html>
