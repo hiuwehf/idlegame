@@ -5,11 +5,15 @@
   <body>
     <script>
       var displaymoney;
-      var money = 100000;
+      var money = 0;
       var gps = 0;
+      var autoclickupgprice = 10;
+      var autoclickinterval = 500;
+      var autoclickvar = 0;
+      var autoclickerprice = 10;
       var gpc = 1;
       var clickpricedisplay;
-      var clickupgprice = 1000;
+      var clickupgprice = 10;
       var miners = 0;
       var minerpricedisplay;
       var minerprice = 10;
@@ -21,6 +25,41 @@
         money += gpc;
       }
 
+      function errorRemove(){
+        var moneyError = document.getElementById("p1");
+        moneyError.style.display = 'none';
+      }
+
+      function autoclickbuy(){
+        if(money >= autoclickerprice){
+          money -= autoclickerprice;
+          autoclickvar = 1;
+          document.getElementById("autoclickerprice").innerHTML = autoclickerprice;
+          document.getElementById("autoclickerprice").innerText = parseFloat(autoclickerprice).toFixed(0);
+          autoclicker();
+        }else{
+          var moneyError = document.getElementById("p1");
+          moneyError.style.display = 'block';
+          setTimeout(errorRemove,500);
+        }
+      }
+
+      // function autoclickupg(){
+      //   if(money >= autoclickupgprice){
+      //     money -= autoclickupgprice;
+      //     autoclickinterval -= 100;
+      //     document.getElementById("autoclickinterval").innerHTML = autoclickinterval;
+      //     document.getElementById("autoclickupgprice").innerHTML = autoclickupgprice;
+      //     document.getElementById("autoclickupgprice").innerText = parseFloat(autoclickupgprice).toFixed(0);
+      //   }
+      // }
+
+      function autoclicker(){
+        if(autoclickvar == 1){
+          setInterval(buttonclick,autoclickinterval);
+        }
+      }
+
       function clickupg() {
         if (money >= clickupgprice) {
           gpc += 100000;
@@ -30,7 +69,9 @@
           document.getElementById("gpcupgprice").innerHTML = gpcupgprice;
           document.getElementById("gpcupgprice").innerText = parseFloat(gpcupgprice).toFixed(0);
         } else {
-          alert("no money kekw");
+          var moneyError = document.getElementById("p1");
+          moneyError.style.display = 'block';
+          setTimeout(errorRemove,500);
         }
       }
 
@@ -45,7 +86,9 @@
           document.getElementById("minerprice").innerHTML = minerprice;
           document.getElementById("minerprice").innerText = parseFloat(minerprice).toFixed(0);
         } else {
-          alert("insufficient");
+          var moneyError = document.getElementById("p1");
+          moneyError.style.display = 'block';
+          setTimeout(errorRemove,500);
         }
       }
 
@@ -60,7 +103,9 @@
           document.getElementById("toolprice").innerHTML = toolprice;
           document.getElementById("toolprice").innerText = parseFloat(toolprice).toFixed(0);
         } else {
-          alert("insufficient funds");
+          var moneyError = document.getElementById("p1");
+          moneyError.style.display = 'block';
+          setTimeout(errorRemove,500);
         }
       }
       setInterval(income, 100);
@@ -117,17 +162,21 @@
           document.getElementById("toolpricedisplay").innerText = parseFloat(toolpricedisplay).toFixed(1) + "m";
         }
       }
-
     </script>
     <button type="button" onclick="buttonclick()">Click</button>
     <button type="button" onclick="minerbuy()">Buy Miner: $<a id="minerpricedisplay">10</a></button>
     <button type="button" onclick="toolsbuy()">Buy Tools: $<a id="toolpricedisplay">100</a></button>
     <button type="button" onclick="clickupg()">Buy Clicker upgrade: $<a id="clickpricedisplay">1000</a></button>
+    <button type="button" onclick="autoclickbuy()">Buy Autoclicker: $<a id="autoclickerprice">10</a></button>
+    <button type="button" onclick="autoclickupg()">Faster autoclicker: $<a id="autoclickupgprice">10</a></button>
 
     <h1>Money: <a id="displaymoney">0</a></h1>
     <h2>Total GPS: <span id="gps">0</span></h2>
     <h2>Total GPC: <span id="gpc">1</span></h2>
     <h3>Miners: <span id="miners">0</span></h3>
     <h3>Tools: <span id="tools">0</span></h3>
+    <div id="moneyError">
+      <p id="p1" style="display:none">Not enough money</p>
+    </div>
   </body>
 </html>
