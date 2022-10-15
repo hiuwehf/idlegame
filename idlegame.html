@@ -15,9 +15,11 @@
       var clickpricedisplay;
       var clickupgprice = 10;
       var miners = 0;
+      var minergps = 1;
       var minerpricedisplay;
       var minerprice = 10;
       var tools = 0;
+      var toolgps = 10;
       var toolpricedisplay;
       var toolprice = 100;
 
@@ -25,11 +27,20 @@
         money += gpc;
       }
 
+      // IF YOU DONT HAVE ENOUGH MONEY FOR UPGRADE, THIS MESSAGE WILL RUN AND DISPLAY THE P1
+      function moneyError(){
+        var moneyError = document.getElementById("p1");
+        moneyError.style.display = 'block';
+        setTimeout(errorRemove,500);
+      }
+
+      // THIS WILL REMOVE THE P1 MESSAGE AFTER 500MS
       function errorRemove(){
         var moneyError = document.getElementById("p1");
         moneyError.style.display = 'none';
       }
 
+      // WILL GIVE THE USER THEIR GOLD PER CLICK AUTOMATICALLY
       function autoclickbuy(){
         if(money >= autoclickerprice){
           money -= autoclickerprice;
@@ -38,9 +49,7 @@
           document.getElementById("autoclickerprice").innerText = parseFloat(autoclickerprice).toFixed(0);
           autoclicker();
         }else{
-          var moneyError = document.getElementById("p1");
-          moneyError.style.display = 'block';
-          setTimeout(errorRemove,500);
+          moneyError();
         }
       }
 
@@ -69,9 +78,7 @@
           document.getElementById("gpcupgprice").innerHTML = gpcupgprice;
           document.getElementById("gpcupgprice").innerText = parseFloat(gpcupgprice).toFixed(0);
         } else {
-          var moneyError = document.getElementById("p1");
-          moneyError.style.display = 'block';
-          setTimeout(errorRemove,500);
+          moneyError();
         }
       }
 
@@ -79,16 +86,14 @@
         if (money >= minerprice) {
           money -= minerprice;
           miners += 1;
-          gps += 1;
+          gps += minergps;
           minerprice = 0.2 * minerprice + minerprice;
           document.getElementById("miners").innerHTML = miners;
           document.getElementById("gps").innerHTML = gps;
           document.getElementById("minerprice").innerHTML = minerprice;
           document.getElementById("minerprice").innerText = parseFloat(minerprice).toFixed(0);
         } else {
-          var moneyError = document.getElementById("p1");
-          moneyError.style.display = 'block';
-          setTimeout(errorRemove,500);
+          moneyError();
         }
       }
 
@@ -103,15 +108,15 @@
           document.getElementById("toolprice").innerHTML = toolprice;
           document.getElementById("toolprice").innerText = parseFloat(toolprice).toFixed(0);
         } else {
-          var moneyError = document.getElementById("p1");
-          moneyError.style.display = 'block';
-          setTimeout(errorRemove,500);
+          moneyError();
         }
       }
       setInterval(income, 100);
       function income() {
         money += gps;
       }
+
+      // WILL FORMAT NUMBERS AND MAKE THEM EASIER TO READ AND UNDERSTAND
       setInterval(shortnumbers, 0);
       function shortnumbers() {
         // MONEY NUMBER FORMATTING
@@ -124,6 +129,9 @@
         } else if (money >= 1000000 && money <= 1000000000) {
           displaymoney = money / 1000000;
           document.getElementById("displaymoney").innerText = parseFloat(displaymoney).toFixed(1) + "m";
+        } else if (money >= 1000000000 && money <= 1000000000000){
+          displaymoney = money / 1000000000;
+          document.getElementById("displaymoney").innerText = parseFloat(displaymoney).toFixed(1) + "b";
         }
         
         // MONEY PER CLICK UPGRADE NUMBER FORMATTING
@@ -162,6 +170,28 @@
           document.getElementById("toolpricedisplay").innerText = parseFloat(toolpricedisplay).toFixed(1) + "m";
         }
       }
+      setInterval(myFunction,100);
+      function myFunction(){
+        if(miners === 20){
+          document.getElementById("miners").innerHTML = miners;
+          let minerUpgButton = document.getElementById("minerupg");
+          minerUpgButton.style.display = 'block';
+        }
+      }
+
+      function minerBoost(){
+        if(money >= 100){
+          money -= 100;
+          minergps += 10;
+          let minerUpgButton2 = document.getElementById("minerupg");
+          minerUpgButton2.remove();
+        }
+      }
+
+      // function buttonRemove(){
+      //   var minerUpgButton2 = document.getElementById("minerupg");
+      //   minerUpgButton2.remove();
+      // }
     </script>
     <button type="button" onclick="buttonclick()">Click</button>
     <button type="button" onclick="minerbuy()">Buy Miner: $<a id="minerpricedisplay">10</a></button>
@@ -177,6 +207,10 @@
     <h3>Tools: <span id="tools">0</span></h3>
     <div id="moneyError">
       <p id="p1" style="display:none">Not enough money</p>
+    </div>
+    <div id="upgrades">
+      <button id="minerupg" type="button" onclick="minerBoost()" style="display:none">Buy Miner upgrade</button>
+      <!-- <button id="toolsupg" type="button" onclick="" style="display:block">Buy Tools upgrade</button> -->
     </div>
   </body>
 </html>
