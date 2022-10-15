@@ -17,6 +17,13 @@ let toolgps = 10;
 let toolpricedisplay;
 let toolprice = 100;
 
+// @hiuwehf dont use variables like this ^
+//
+// you should use descriptive names like
+//
+// let goldPerMinute = 0
+// let autoClickerDisplayPrice = ...
+
 function buttonclick() {
 	money += gpc;
 }
@@ -39,6 +46,21 @@ function autoclickbuy() {
 	if (money >= autoclickerprice) {
 		money -= autoclickerprice;
 		autoclicklet = 1;
+
+		/* 
+        @hiuwehf instead of doing this all the time
+        document.getElementById('element-id').innerHTML = .......;
+
+        // you can define it at the top (always at the top so you can find them easly) 
+
+        const autoClickerPriceElement = document.getElementById('autoclickerprice')
+
+        // and later in your code use 
+        
+        autoClickerPriceElement.innerHTML = ....
+
+        */
+
 		document.getElementById('autoclickerprice').innerHTML =
 			autoclickerprice;
 		document.getElementById('autoclickerprice').innerText =
