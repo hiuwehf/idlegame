@@ -1,21 +1,21 @@
-var displaymoney;
-var money = 0;
-var gps = 0;
-var autoclickupgprice = 10;
-var autoclickinterval = 500;
-var autoclickvar = 0;
-var autoclickerprice = 10;
-var gpc = 1;
-var clickpricedisplay;
-var clickupgprice = 10;
-var miners = 0;
-var minergps = 1;
-var minerpricedisplay;
-var minerprice = 10;
-var tools = 0;
-var toolgps = 10;
-var toolpricedisplay;
-var toolprice = 100;
+let displaymoney;
+let money = 0;
+let gps = 0;
+let autoclickupgprice = 10;
+let autoclickinterval = 500;
+let autoclicklet = 0;
+let autoclickerprice = 10;
+let gpc = 1;
+let clickpricedisplay;
+let clickupgprice = 10;
+let miners = 0;
+let minergps = 1;
+let minerpricedisplay;
+let minerprice = 10;
+let tools = 0;
+let toolgps = 10;
+let toolpricedisplay;
+let toolprice = 100;
 
 function buttonclick() {
 	money += gpc;
@@ -23,14 +23,14 @@ function buttonclick() {
 
 // IF YOU DONT HAVE ENOUGH MONEY FOR UPGRADE, THIS MESSAGE WILL RUN AND DISPLAY THE P1
 function moneyError() {
-	var moneyError = document.getElementById('p1');
+	let moneyError = document.getElementById('p1');
 	moneyError.style.display = 'block';
 	setTimeout(errorRemove, 500);
 }
 
 // THIS WILL REMOVE THE P1 MESSAGE AFTER 500MS
 function errorRemove() {
-	var moneyError = document.getElementById('p1');
+	let moneyError = document.getElementById('p1');
 	moneyError.style.display = 'none';
 }
 
@@ -38,7 +38,7 @@ function errorRemove() {
 function autoclickbuy() {
 	if (money >= autoclickerprice) {
 		money -= autoclickerprice;
-		autoclickvar = 1;
+		autoclicklet = 1;
 		document.getElementById('autoclickerprice').innerHTML =
 			autoclickerprice;
 		document.getElementById('autoclickerprice').innerText =
@@ -60,7 +60,7 @@ function autoclickbuy() {
 // }
 
 function autoclicker() {
-	if (autoclickvar == 1) {
+	if (autoclicklet == 1) {
 		setInterval(buttonclick, autoclickinterval);
 	}
 }
@@ -201,6 +201,6 @@ function minerBoost() {
 }
 
 // function buttonRemove(){
-//   var minerUpgButton2 = document.getElementById("minerupg");
+//   let minerUpgButton2 = document.getElementById("minerupg");
 //   minerUpgButton2.remove();
 // }
