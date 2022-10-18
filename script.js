@@ -1,19 +1,19 @@
 let displaymoney;
 let money = 0;
-let gps = 0;
+let goldPerSecond = 0;
 let autoclickupgprice = 10;
 let autoclickinterval = 500;
 let autoclicklet = 0;
 let autoclickerprice = 10;
-let gpc = 1;
+let goldPerClick = 1;
 let clickpricedisplay;
 let clickupgprice = 10;
 let miners = 0;
-let minergps = 1;
+let minerGoldPerSecond = 1;
 let minerpricedisplay;
 let minerprice = 10;
 let tools = 0;
-let toolgps = 10;
+let toolGoldPerSecond = 10;
 let toolpricedisplay;
 let toolprice = 100;
 
@@ -25,7 +25,7 @@ let toolprice = 100;
 // let autoClickerDisplayPrice = ...
 
 function buttonclick() {
-	money += gpc;
+	money += goldPerClick;
 }
 
 // IF YOU DONT HAVE ENOUGH MONEY FOR UPGRADE, THIS MESSAGE WILL RUN AND DISPLAY THE P1
@@ -89,13 +89,13 @@ function autoclicker() {
 
 function clickupg() {
 	if (money >= clickupgprice) {
-		gpc += 100000;
+		goldPerClick += 100000;
 		money -= clickupgprice;
 		clickupgprice = 0.2 * clickupgprice + clickupgprice;
-		document.getElementById('gpc').innerHTML = gpc;
-		document.getElementById('gpcupgprice').innerHTML = gpcupgprice;
-		document.getElementById('gpcupgprice').innerText =
-			parseFloat(gpcupgprice).toFixed(0);
+		document.getElementById('goldPerClick').innerHTML = goldPerClick;
+		document.getElementById('goldPerClickupgprice').innerHTML = goldPerClickupgprice;
+		document.getElementById('goldPerClickupgprice').innerText =
+			parseFloat(goldPerClickupgprice).toFixed(0);
 	} else {
 		moneyError();
 	}
@@ -105,10 +105,10 @@ function minerbuy() {
 	if (money >= minerprice) {
 		money -= minerprice;
 		miners += 1;
-		gps += minergps;
+		goldPerSecond += minerGoldPerSecond;
 		minerprice = 0.2 * minerprice + minerprice;
 		document.getElementById('miners').innerHTML = miners;
-		document.getElementById('gps').innerHTML = gps;
+		document.getElementById('goldPerSecond').innerHTML = goldPerSecond;
 		document.getElementById('minerprice').innerHTML = minerprice;
 		document.getElementById('minerprice').innerText =
 			parseFloat(minerprice).toFixed(0);
@@ -121,10 +121,10 @@ function toolsbuy() {
 	if (money >= toolprice) {
 		tools += 1;
 		money -= toolprice;
-		gps += 10;
+		goldPerSecond += 10;
 		toolprice = 0.2 * toolprice + toolprice;
 		document.getElementById('tools').innerHTML = tools;
-		document.getElementById('gps').innerHTML = gps;
+		document.getElementById('goldPerSecond').innerHTML = goldPerSecond;
 		document.getElementById('toolprice').innerHTML = toolprice;
 		document.getElementById('toolprice').innerText =
 			parseFloat(toolprice).toFixed(0);
@@ -134,7 +134,7 @@ function toolsbuy() {
 }
 setInterval(income, 100);
 function income() {
-	money += gps;
+	money += goldPerSecond;
 }
 
 // WILL FORMAT NUMBERS AND MAKE THEM EASIER TO READ AND UNDERSTAND
@@ -216,7 +216,7 @@ function myFunction() {
 function minerBoost() {
 	if (money >= 100) {
 		money -= 100;
-		minergps += 10;
+		minerGoldPerSecond = 10;
 		let minerUpgButton2 = document.getElementById('minerupg');
 		minerUpgButton2.remove();
 	}
