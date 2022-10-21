@@ -2,7 +2,7 @@ body{
     background-color: black;
 }
 button{
-    padding:10px;
+    padding:20px;
 }
 #clickButton{
     border-radius: 10px 10px 10px 10px;
@@ -15,6 +15,7 @@ button{
     padding: 10px;
     margin: 10px;
     background-color: yellow;
+    display:flex;
 }
 
 #mainButtons{
@@ -44,6 +45,35 @@ button{
     padding: 5px;
     margin: 10px;
     background-color: brown;
+    display:flex;
+    font-size:30px;
+    padding:5px;
+    margin:10px;
+}
+
+.displayMoney{
+    flex:2;
+    order:3;
+}
+
+.goldPerSecond{
+    flex:2;
+    order:1;
+}
+
+.goldPerClick{
+    flex:2;
+    order:2;
+}
+
+.miners{
+    flex:2;
+    order:4;
+}
+
+.tools{
+    flex:1;
+    order:5;
 }
 
 #moneyError{

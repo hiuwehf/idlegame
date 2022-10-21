@@ -93,9 +93,9 @@ function clickupg() {
 		money -= clickupgprice;
 		clickupgprice = 0.2 * clickupgprice + clickupgprice;
 		document.getElementById('goldPerClick').innerHTML = goldPerClick;
-		document.getElementById('goldPerClickupgprice').innerHTML = goldPerClickupgprice;
+		document.getElementById('goldPerClickupgprice').innerHTML = clickupgprice;
 		document.getElementById('goldPerClickupgprice').innerText =
-			parseFloat(goldPerClickupgprice).toFixed(0);
+			parseFloat(clickupgprice).toFixed(0);
 	} else {
 		moneyError();
 	}
@@ -174,6 +174,7 @@ function shortnumbers() {
 			parseFloat(clickpricedisplay).toFixed(1) + 'm';
 	}
 
+	
 	// MINER NUMBER FORMATTING
 	if (minerprice >= 1 && minerprice < 10000) {
 		minerpricedisplay = minerprice;
