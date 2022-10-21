@@ -32,7 +32,7 @@ function buttonclick() {
 function moneyError() {
 	let moneyError = document.getElementById('p1');
 	moneyError.style.display = 'block';
-	setTimeout(errorRemove, 500);
+	setTimeout(errorRemove, 1000);
 }
 
 // THIS WILL REMOVE THE P1 MESSAGE AFTER 500MS
@@ -208,7 +208,7 @@ setInterval(myFunction, 100);
 function myFunction() {
 	if (miners === 20) {
 		document.getElementById('miners').innerHTML = miners;
-		let minerUpgButton = document.getElementById('minerupg');
+		let minerUpgButton = document.getElementById('minerUpgrade');
 		minerUpgButton.style.display = 'block';
 	}
 }
@@ -217,7 +217,7 @@ function minerBoost() {
 	if (money >= 100) {
 		money -= 100;
 		minerGoldPerSecond = 10;
-		let minerUpgButton2 = document.getElementById('minerupg');
+		let minerUpgButton2 = document.getElementById('minerUpgrade');
 		minerUpgButton2.remove();
 	}
 }

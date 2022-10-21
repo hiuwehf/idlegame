@@ -4,43 +4,44 @@
 		<title>Idle game</title>
 	</head>
 	<body>
-		<button type="button" onclick="buttonclick()">Click</button>
-		<button type="button" onclick="minerbuy()">
-			Buy Miner: $<a id="minerpricedisplay">10</a>
-		</button>
-		<button type="button" onclick="toolsbuy()">
-			Buy Tools: $<a id="toolpricedisplay">100</a>
-		</button>
-		<button type="button" onclick="clickupg()">
-			Buy Clicker upgrade: $<a id="clickpricedisplay">1000</a>
-		</button>
-		<button type="button" onclick="autoclickbuy()">
-			Buy Autoclicker: $<a id="autoclickerprice">10</a>
-		</button>
-		<button type="button" onclick="autoclickupg()">
-			Faster autoclicker: $<a id="autoclickupgprice">10</a>
-		</button>
-
-		<h1>Money: <a id="displaymoney">0</a></h1>
-		<h2>Total GPS: <span id="goldPerSecond">0</span></h2>
-		<h2>Total GPC: <span id="goldPerClick">1</span></h2>
-		<h3>Miners: <span id="miners">0</span></h3>
-		<h3>Tools: <span id="tools">0</span></h3>
-		<div id="moneyError">
-			<p id="p1" style="display: none">Not enough money</p>
+		<div id="main">
+			<div id="mainButtons">
+				<div id="clickButtonLocation">
+					<button id ="clickButton" type="button" onclick="buttonclick()">Click</button>
+				</div>
+				<div id="incomeButtons">
+					<button class ="incomeButton1" type="button" onclick="minerbuy()">
+						Buy Miner: $<a id="minerpricedisplay">10</a>
+					</button>
+					<button class="incomeButton2" type="button" onclick="toolsbuy()">
+						Buy Tools: $<a id="toolpricedisplay">100</a>
+					</button>
+					<button class="incomeButton3" type="button" onclick="clickupg()">
+						Buy Clicker upgrade: $<a id="clickpricedisplay">10</a>
+					</button>
+				</div>
+				<!-- <button type="button" onclick="autoclickbuy()">
+					Buy Autoclicker: $<a id="autoclickerprice">10</a>
+				</button>
+				<button type="button" onclick="autoclickupg()">
+					Faster autoclicker: $<a id="autoclickupgprice">10</a>
+				</button> -->
+			</div>
+			<div id="stats">
+				<p>Money: <a id="displaymoney">0</a></p>
+				<p>Total GPS: <span id="goldPerSecond">0</span></p>
+				<p>Total GPC: <span id="goldPerClick">1</span></p>
+				<p>Miners: <span id="miners">0</span></p>
+				<p>Tools: <span id="tools">0</span></p>
+			</div>
+			<div id="moneyError">
+				<p id="p1" style="display: none">Not enough money</p>
+			</div>
+			<div id="upgradeSection">
+				<button id="minerUpgrade" type="button" onclick="minerBoost()" style="display: none">Buy Miner upgrade</button>
+				<!-- <button id="toolsupg" type="button" onclick="" style="display:block">Buy Tools upgrade</button> -->
+			</div>
 		</div>
-		<div id="upgrades">
-			<button
-				id="minerupg"
-				type="button"
-				onclick="minerBoost()"
-				style="display: none"
-			>
-				Buy Miner upgrade
-			</button>
-			<!-- <button id="toolsupg" type="button" onclick="" style="display:block">Buy Tools upgrade</button> -->
-		</div>
-
 		<script src="./script.js"></script>
 	</body>
 </html>
