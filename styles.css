@@ -1,94 +1,154 @@
 body{
-    background-color: black;
+    background-color: #763a2b;
 }
 button{
     padding:20px;
+    width:400px;
 }
-#clickButton{
-    border-radius: 10px 10px 10px 10px;
+.clickButton{
+    border:2px solid gray;
+    border-radius: 10px;
     padding: 30px 70px 30px 70px;
-    font-size: 20px;
+    font-size: 30px;
+    width:100%;
+    height:100%;
+    background-image: url(rock.png);
+    object-fit: fill;
+    border-top: 2px solid black;
 }
 
 #main{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     padding: 10px;
-    margin: 10px;
-    background-color: yellow;
+    margin: 40px 10px 10px 10px;
+    background-color: #6b7078;
     display:flex;
-}
-
-#mainButtons{
-    border: 2px solid black;
-    padding: 10px;
-    margin: 10px;
-    background-color: aqua;
-}
-
-#clickButtonLocation{
-    border:2px solid black;
-    padding: 10px;
-    margin: 10px;
-    background-color: bisque;
-    text-align: center;
+    flex-direction: column;
+    height: 90%;
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.5),
+            inset 10px 10px 8px rgba(0,0,0,0.5);
 }
 
 #incomeButtons{
-    border:2px solid black;
+    /* border: 2px solid black; */
     padding: 10px;
-    margin: 10px;
-    background-color: blueviolet;
+    margin: 0px;
+    /* background-color: aqua; */
+    order:2;
+    display:flex;
+    flex-direction: column-reverse;
 }
 
-#stats{
-    border:2px solid black;
-    padding: 5px;
-    margin: 10px;
-    background-color: brown;
+#middleSection{
+    /* border:2px solid black; */
     display:flex;
-    font-size:30px;
+    flex-direction: row;
+    justify-content: center;
+    height:500px;
+}
+
+#box1{
+    /* border:2px solid black; */
+    flex:1;
     padding:5px;
+    background-color: white;
+    border-right: 1px solid black;
+}
+
+#box2{
+    /* border:2px solid black; */
+    flex:2;
+    display:flex;
+    background-color:rgb(126,200,80);
+}
+
+#box3{
+    /* border:2px solid black; */
+    flex:1;
+    background-color: white;
+    border-left: 1px solid black;
+}
+
+.incomeUpgrade{
+    background-color: bisque;
     margin:10px;
 }
 
+#clickButtonLocation{
+    /* border:2px solid black; */
+    display:flex;
+    justify-content: center;
+    height: 200px;
+    /* background-color: bisque; */
+}
+
+#stats{
+    /* border:2px solid black; */
+    padding: 5px;
+    margin: 10px 10px 0px 10px;
+    background-color: #8fdafa;
+    display:flex;
+    justify-content:space-around;
+    font-size:30px;
+    padding:5px;
+    order:1;
+    border: 2px dotted white;
+}
+
+p.stat{
+    border:1px solid white;
+    border-radius:10px;
+}
+
 .displayMoney{
-    flex:2;
-    order:3;
+    /* flex:2; */
+    /* order:3; */
 }
 
 .goldPerSecond{
-    flex:2;
-    order:1;
+    /* flex:2; */
+    /* order:1; */
 }
 
 .goldPerClick{
-    flex:2;
-    order:2;
+    /* flex:2; */
+    /* order:2; */
 }
 
 .miners{
-    flex:2;
-    order:4;
+    /* flex:2; */
+    /* order:4; */
 }
 
 .tools{
-    flex:1;
-    order:5;
+    /* flex:1; */
+    /* order:5; */
+}
+
+.unlockableButton{
+    width:100px;
+    margin:5px;
+}
+
+#topSection{
+    margin:0px;
 }
 
 #moneyError{
-    border:2px solid black;
-    padding: 10px;
-    margin: 10px;
-    background-color: red;
+    /* border:2px solid black; */
+    font-weight: bold;
+    color:red;
+    padding:0;
+    margin: 0px 10px 0px 10px;
     height: 50px;
-    width:10%   
+    order:3;
+    display: flex;
+    justify-content: center;
+    width:300px;
+    margin:auto;
 }
 
-#upgradeSection{
-    border:2px solid black;
-    padding: 10px;
-    margin: 10px;
-    background-color: green;
-    height:10px;
+div{
+    border-radius: 10px;
 }
+

@@ -5,20 +5,41 @@
 	</head>
 	<body>
 		<div id="main">
-			<div id="mainButtons">
-				<div id="clickButtonLocation">
-					<button id ="clickButton" type="button" onclick="buttonclick()">Click</button>
-				</div>
 				<div id="incomeButtons">
-					<button class ="incomeButton1" type="button" onclick="minerbuy()">
-						Buy Miner: $<a id="minerpricedisplay">10</a>
-					</button>
-					<button class="incomeButton2" type="button" onclick="toolsbuy()">
-						Buy Tools: $<a id="toolpricedisplay">100</a>
-					</button>
-					<button class="incomeButton3" type="button" onclick="clickupg()">
-						Buy Clicker upgrade: $<a id="clickpricedisplay">10</a>
-					</button>
+					<div id="clickButtonLocation">
+						<button class ="clickButton" type="button" onclick="buttonclick()">Click</button>
+					</div>
+					<div id="middleSection">
+						<div id="box1">
+							<div class="miners">
+								<p>Miners: <span id="miners">0</span></p>
+							</div>
+							<div class="tools">
+								<p>Tools: <span id="tools">0</span></p>
+							</div>
+						</div>
+						<div id="box2">
+							<div class="buyMiner">
+								<button class ="IncomeUpgrade" type="button" onclick="minerbuy()">
+									Buy Miner: $<a id="minerpricedisplay">10</a>
+								</button>
+							</div>
+							<div class="buyTools">
+								<button class="incomeUpgrade" type="button" onclick="toolsbuy()">
+									Buy Tools: $<a id="toolpricedisplay">100</a>
+								</button>
+							</div>
+							<div class="upgradeClick">
+								<button class="incomeUpgrade" type="button" onclick="clickupg()">
+									Buy Clicker upgrade: $<a id="clickpricedisplay">10</a>
+								</button>
+							</div>
+						</div>
+						<div id="box3">
+							<button class ="unlockableButton" id="minerUpgrade" type="button" onclick="minerBoost()" style="display: none">Buy Miner upgrade</button>
+							<!-- <button id="toolsupg" type="button" onclick="" style="display:block">Buy Tools upgrade</button> -->
+						</div>
+					</div>
 				</div>
 				<!-- <button type="button" onclick="autoclickbuy()">
 					Buy Autoclicker: $<a id="autoclickerprice">10</a>
@@ -26,31 +47,23 @@
 				<button type="button" onclick="autoclickupg()">
 					Faster autoclicker: $<a id="autoclickupgprice">10</a>
 				</button> -->
-			</div>
-			<div id="stats">
-				<div class="displayMoney">
-					<p>Gold: <a id="displaymoney">0</a></p>
+			<div id="topSection">
+				<div id="stats">
+						<div class="goldPerSecond">
+							<p class="stat">Total GPS: <span id="goldPerSecond">0</span></p>
+						</div>
+						<div class="displayMoney">
+							<p class="stat">Gold: <a id="displaymoney">0</a></p>
+						</div>
+						<div class="goldPerClick">
+							<p class="stat">Total GPC: <span id="goldPerClick">1</span></p>
+						</div>
 				</div>
-				<div class="goldPerSecond">
-					<p>Total GPS: <span id="goldPerSecond">0</span></p>
-				</div>
-				<div class="goldPerClick">
-					<p>Total GPC: <span id="goldPerClick">1</span></p>
-				</div>
-				<div class="miners">
-					<p>Miners: <span id="miners">0</span></p>
-				</div>
-				<div class="tools">
-					<p>Tools: <span id="tools">0</span></p>
+				<div id="moneyError">
+					<p id="p1" style="display: none">Not enough money</p>
 				</div>
 			</div>
-			<div id="moneyError">
-				<p id="p1" style="display: none">Not enough money</p>
-			</div>
-			<div id="upgradeSection">
-				<button id="minerUpgrade" type="button" onclick="minerBoost()" style="display: none">Buy Miner upgrade</button>
-				<!-- <button id="toolsupg" type="button" onclick="" style="display:block">Buy Tools upgrade</button> -->
-			</div>
+			
 		</div>
 		<script src="./script.js"></script>
 	</body>
